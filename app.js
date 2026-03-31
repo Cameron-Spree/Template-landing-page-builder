@@ -1,4 +1,4 @@
-const { createApp, reactive, computed } = Vue;
+const { createApp, reactive, computed, watch, ref } = Vue;
 
 const defaultState = {
     // GLOBAL DESIGN
@@ -318,10 +318,27 @@ const getBlock5 = (s) => `
 
 createApp({
     setup() {
-        const state = reactive(defaultState);
-        const activeTab = Vue.ref('hero');
-        const showExport = Vue.ref(false);
-        const exportTab = Vue.ref(1);
+        let initialState = JSON.parse(JSON.stringify(defaultState));
+        const savedStateStr = localStorage.getItem('lugardeBuilderState');
+        if (savedStateStr) {
+            try {
+                const saved = JSON.parse(savedStateStr);
+                initialState = { ...initialState, ...saved };
+            } catch (e) {
+                console.error("Could not load saved state", e);
+            }
+        }
+        
+        const state = reactive(initialState);
+
+        // Keep local storage perfectly synced with the state
+        watch(state, (newState) => {
+            localStorage.setItem('lugardeBuilderState', JSON.stringify(newState));
+        }, { deep: true });
+
+        const activeTab = ref('hero');
+        const showExport = ref(false);
+        const exportTab = ref(1);
         const exportedBlocks = reactive({ block1: '', block3: '', block4: '', block5: '' });
 
         const previewHtml = computed(() => {
@@ -377,6 +394,14 @@ ${getScaleCSS(state)}
             alert('Block Copied to Clipboard!');
         };
 
+        const resetState = () => {
+            if (confirm("Are you sure you want to reset all content and sizes back to their original defaults? This cannot be undone.")) {
+                localStorage.removeItem('lugardeBuilderState');
+                Object.assign(state, defaultState);
+                location.reload();
+            }
+        };
+
         return {
             state,
             activeTab,
@@ -385,7 +410,8 @@ ${getScaleCSS(state)}
             exportTab,
             exportedBlocks,
             exportBlocks,
-            copyActiveBlock
+            copyActiveBlock,
+            resetState
         }
     }
 }).mount('#app');

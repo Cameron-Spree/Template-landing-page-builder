@@ -22,7 +22,10 @@
             <span class="material-symbols-outlined">edit_square</span>
             <strong>Lugarde</strong> Template Builder
         </div>
-        <div>
+        <div style="display: flex; gap: 1rem;">
+            <button @click="resetState" class="btn-primary" style="background-color: #ba1a1a;">
+                <span class="material-symbols-outlined">restart_alt</span> Reset History
+            </button>
             <button @click="exportBlocks" class="btn-primary">
                 <span class="material-symbols-outlined">download</span> Export Magento Blocks
             </button>
