@@ -14,11 +14,19 @@ const defaultState = {
     scHeroBtn: 1.0,
     scHeroSpec: 1.0,
     scCatTitle: 1.0,
+    scCatModule: 1.0,
+    scCatLink: 1.0,
     scTechTag: 1.0,
     scTechTitle: 1.0,
     scTechDesc: 1.0,
     scTechCardTitle: 1.0,
     scTechCardDesc: 1.0,
+    scTechStatLabel: 1.0,
+    scTechStatValue: 1.0,
+    scCredTag: 1.0,
+    scCredTitle: 1.0,
+    scCredName: 1.0,
+    scCredDesc: 1.0,
     scFooterTitle: 1.0,
     scFooterDesc: 1.0,
 
@@ -87,22 +95,34 @@ const getScaleCSS = (s) => `
 .lugarde-premier-page .lp-hero__desc { font-size: calc(1rem * ${s.scHeroDesc}) !important; }
 .lugarde-premier-page .lp-hero__buttons .lp-btn { font-size: calc(0.8rem * ${s.scHeroBtn}) !important; }
 
-.lugarde-premier-page .lp-hero__spec-label { font-size: calc(0.7rem * ${s.scHeroSpec}) !important; }
-.lugarde-premier-page .lp-hero__spec-value { font-size: calc(1.25rem * ${s.scHeroSpec}) !important; }
+.lugarde-premier-page .lp-hero__spec-label { font-size: calc(10px * ${s.scHeroSpec}) !important; }
+.lugarde-premier-page .lp-hero__spec-value { font-size: calc(0.875rem * ${s.scHeroSpec}) !important; }
 
-.lugarde-premier-page .lp-category-card__title { font-size: calc(2rem * ${s.scCatTitle}) !important; }
+.lugarde-premier-page .lp-category-card__module { font-size: calc(10px * ${s.scCatModule}) !important; }
+.lugarde-premier-page .lp-category-card__title { font-size: calc(1.75rem * ${s.scCatTitle}) !important; }
+.lugarde-premier-page .lp-category-card__link { font-size: calc(10px * ${s.scCatLink}) !important; }
 
-.lugarde-premier-page .lp-technical__tag { font-size: calc(0.8rem * ${s.scTechTag}) !important; }
+.lugarde-premier-page .lp-config-cta__title { font-size: calc(2rem * ${s.scCtaTitle}) !important; }
+
+.lugarde-premier-page .lp-technical__tag { font-size: calc(0.75rem * ${s.scTechTag}) !important; }
 .lugarde-premier-page .lp-technical__title { font-size: calc(2.5rem * ${s.scTechTitle}) !important; }
-@media(min-width: 768px) { .lugarde-premier-page .lp-technical__title { font-size: calc(3.5rem * ${s.scTechTitle}) !important; } }
-.lugarde-premier-page .lp-technical__subtitle { font-size: calc(1rem * ${s.scTechDesc}) !important; }
+@media(min-width: 1024px) { .lugarde-premier-page .lp-technical__title { font-size: calc(3.75rem * ${s.scTechTitle}) !important; } }
+.lugarde-premier-page .lp-technical__subtitle { font-size: calc(1.25rem * ${s.scTechDesc}) !important; }
 
 .lugarde-premier-page .lp-tech-card__content-title { font-size: calc(1.5rem * ${s.scTechCardTitle}) !important; }
-.lugarde-premier-page .lp-tech-card__content-desc { font-size: calc(0.95rem * ${s.scTechCardDesc}) !important; }
+.lugarde-premier-page .lp-tech-card__content-desc { font-size: calc(0.875rem * ${s.scTechCardDesc}) !important; }
 
-.lugarde-premier-page .lp-cta__title { font-size: calc(3rem * ${s.scFooterTitle}) !important; }
-@media(min-width: 768px) { .lugarde-premier-page .lp-cta__title { font-size: calc(4.5rem * ${s.scFooterTitle}) !important; } }
-.lugarde-premier-page .lp-cta__desc { font-size: calc(1.1rem * ${s.scFooterDesc}) !important; }
+.lugarde-premier-page .lp-tech-stat__label { font-size: calc(10px * ${s.scTechStatLabel}) !important; }
+.lugarde-premier-page .lp-tech-stat__value { font-size: calc(0.875rem * ${s.scTechStatValue}) !important; }
+
+.lugarde-premier-page .lp-credentials__tag { font-size: calc(10px * ${s.scCredTag}) !important; }
+.lugarde-premier-page .lp-credentials__title { font-size: calc(1.875rem * ${s.scCredTitle}) !important; }
+.lugarde-premier-page .lp-credential__name { font-size: calc(0.75rem * ${s.scCredName}) !important; }
+.lugarde-premier-page .lp-credential__desc { font-size: calc(10px * ${s.scCredDesc}) !important; }
+
+.lugarde-premier-page .lp-cta__title { font-size: calc(2.5rem * ${s.scFooterTitle}) !important; }
+@media(min-width: 1024px) { .lugarde-premier-page .lp-cta__title { font-size: calc(4.5rem * ${s.scFooterTitle}) !important; } }
+.lugarde-premier-page .lp-cta__desc { font-size: calc(1.25rem * ${s.scFooterDesc}) !important; }
 `;
 
 const getBlock3 = (s) => `

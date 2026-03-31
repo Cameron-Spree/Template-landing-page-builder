@@ -92,7 +92,11 @@
 
                     <h4 class="settings-divider">Categories</h4>
                     <div class="grid-2">
+                        <div class="form-group"><label>Overline Tag</label><input type="number" step="0.1" v-model="state.scCatModule"></div>
                         <div class="form-group"><label>Category Title</label><input type="number" step="0.1" v-model="state.scCatTitle"></div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Button Text</label><input type="number" step="0.1" v-model="state.scCatLink"></div>
                     </div>
 
                     <h4 class="settings-divider">Technical Report</h4>
@@ -106,6 +110,20 @@
                     <div class="grid-2">
                         <div class="form-group"><label>Card Titles</label><input type="number" step="0.1" v-model="state.scTechCardTitle"></div>
                         <div class="form-group"><label>Card Desc</label><input type="number" step="0.1" v-model="state.scTechCardDesc"></div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Stat Label</label><input type="number" step="0.1" v-model="state.scTechStatLabel"></div>
+                        <div class="form-group"><label>Stat Value</label><input type="number" step="0.1" v-model="state.scTechStatValue"></div>
+                    </div>
+
+                    <h4 class="settings-divider">Trade Credentials</h4>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Section Tag</label><input type="number" step="0.1" v-model="state.scCredTag"></div>
+                        <div class="form-group"><label>Main Title</label><input type="number" step="0.1" v-model="state.scCredTitle"></div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Icon Heading</label><input type="number" step="0.1" v-model="state.scCredName"></div>
+                        <div class="form-group"><label>Icon Desc</label><input type="number" step="0.1" v-model="state.scCredDesc"></div>
                     </div>
 
                     <h4 class="settings-divider">Footer CTA</h4>
