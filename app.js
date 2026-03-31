@@ -273,13 +273,13 @@ createApp({
                 // In the builder, template-styles.css holds our exact styling.
                 const res = await fetch('template-styles.css');
                 const css = await res.text();
-                block1Str = \`<!-- Google Fonts -->
+                block1Str = `<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
 <style>
-\${css}
-</style>\`;
+${css}
+</style>`;
             } catch (e) {
                 block1Str = "<!-- Please copy the contents of block-1-shared-styles.html directly from original source -->";
             }
