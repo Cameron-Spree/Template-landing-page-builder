@@ -2,8 +2,9 @@ const { createApp, reactive, computed } = Vue;
 
 const defaultState = {
     // GLOBAL DESIGN
-    fontHeadline: "'Noto Serif', Georgia, serif",
-    fontBody: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+    fontHeadline: "Noto Serif",
+    fontBody: "Helvetica Neue",
+    fontMono: "Space Mono",
     fontSize: "16",
 
     // HERO
@@ -292,8 +293,9 @@ ${css}
 
 /* Dynamic User Overrides */
 .lugarde-premier-page {
-    --lp-font-headline: ${state.fontHeadline} !important;
-    --lp-font-body: ${state.fontBody} !important;
+    --lp-font-headline: '${state.fontHeadline}', serif !important;
+    --lp-font-body: '${state.fontBody}', sans-serif !important;
+    --lp-font-mono: '${state.fontMono}', monospace !important;
     font-size: ${state.fontSize}px !important;
 }
 </style>`;

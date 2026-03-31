@@ -45,17 +45,26 @@
                 <div v-show="activeTab === 'design'">
                     <p class="section-help">Customize typography and scaling variables globally.</p>
                     
-                    <h4 class="settings-divider">Typography</h4>
+                    <h4 class="settings-divider">Typography Settings</h4>
                     <div class="form-group">
-                        <label>Headline Font Family</label>
+                        <label>Large Headings Font</label>
                         <input type="text" v-model="state.fontHeadline">
-                    </div>
-                    <div class="form-group">
-                        <label>Body Text Font Family</label>
-                        <input type="text" v-model="state.fontBody">
+                        <p class="section-help" style="margin-top: 0.25rem;">Used for the main Hero title and large section titles. (e.g. Noto Serif, Playfair Display)</p>
                     </div>
                     
-                    <h4 class="settings-divider">Scaling</h4>
+                    <div class="form-group">
+                        <label>Body Paragraphs Font</label>
+                        <input type="text" v-model="state.fontBody">
+                        <p class="section-help" style="margin-top: 0.25rem;">Used for the readable paragraph descriptions. (e.g. Helvetica, Arial)</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Buttons & Tags Font (Accent)</label>
+                        <input type="text" v-model="state.fontMono">
+                        <p class="section-help" style="margin-top: 0.25rem;">Used for buttons, tiny module labels, and numbers. (e.g. Space Mono, Courier)</p>
+                    </div>
+                    
+                    <h4 class="settings-divider">Global Scaling</h4>
                     <div class="form-group">
                         <label>Base Font Size (px)</label>
                         <input type="number" v-model="state.fontSize" min="12" max="24" step="1">
@@ -246,8 +255,9 @@
             <!-- This div is what scopes the template CSS so it doesn't leak out -->
             <div class="lugarde-premier-page" 
                  :style="{
-                    '--lp-font-headline': state.fontHeadline,
-                    '--lp-font-body': state.fontBody,
+                    '--lp-font-headline': `'${state.fontHeadline}', serif`,
+                    '--lp-font-body': `'${state.fontBody}', sans-serif`,
+                    '--lp-font-mono': `'${state.fontMono}', monospace`,
                     'font-size': state.fontSize + 'px'
                  }"
                  v-html="previewHtml"></div>
