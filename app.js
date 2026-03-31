@@ -1,6 +1,11 @@
 const { createApp, reactive, computed } = Vue;
 
 const defaultState = {
+    // GLOBAL DESIGN
+    fontHeadline: "'Noto Serif', Georgia, serif",
+    fontBody: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+    fontSize: "16",
+
     // HERO
     heroTag: "Lugarde Summer Houses at Lawsons",
     heroTitle: "Enjoy the outdoors with \n<em>Lugarde</em>",
@@ -284,6 +289,13 @@ createApp({
 <!-- Magento scoped wrapper styles block -->
 <style>
 ${css}
+
+/* Dynamic User Overrides */
+.lugarde-premier-page {
+    --lp-font-headline: ${state.fontHeadline} !important;
+    --lp-font-body: ${state.fontBody} !important;
+    font-size: ${state.fontSize}px !important;
+}
 </style>`;
             } catch (e) {
                 block1Str = "<!-- Please copy the contents of block-1-shared-styles.html directly from original source -->";
