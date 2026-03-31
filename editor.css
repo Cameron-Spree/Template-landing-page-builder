@@ -1,0 +1,206 @@
+/* Editor Specific Styles - Kept entirely separate from the Template styles */
+:root {
+    --e-bg: #f4f5f7;
+    --e-surface: #ffffff;
+    --e-border: #e1e4e8;
+    --e-text: #24292e;
+    --e-text-muted: #586069;
+    --e-primary: #009640; /* Lawsons green */
+    --e-primary-hover: #007a34;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--e-bg);
+    color: var(--e-text);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.builder-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    height: 60px;
+    background-color: var(--e-surface);
+    border-bottom: 1px solid var(--e-border);
+    flex-shrink: 0;
+}
+
+.nav-brand {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #051927;
+}
+
+.btn-primary {
+    background-color: var(--e-primary);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn-primary:hover { background-color: var(--e-primary-hover); }
+
+.builder-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.builder-sidebar {
+    width: 350px;
+    background-color: var(--e-surface);
+    border-right: 1px solid var(--e-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--e-border);
+}
+.sidebar-tabs button {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 1rem 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--e-text-muted);
+    border-bottom: 2px solid transparent;
+}
+.sidebar-tabs button.active {
+    color: var(--e-primary);
+    border-bottom-color: var(--e-primary);
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--e-text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--e-border);
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 0.875rem;
+}
+
+.settings-divider {
+    font-size: 0.875rem;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--e-border);
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.section-help {
+    font-size: 0.875rem;
+    color: var(--e-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.category-editor-card {
+    border: 1px solid var(--e-border);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    background: #fafbfc;
+}
+.category-editor-card h5 { margin: 0 0 1rem 0; font-size: 0.9rem; }
+
+/* The Live Preview Panel */
+.builder-preview {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #fff;
+    /* Simulate a full screen width where possible */
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.modal {
+    background: #fff;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.modal header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--e-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal header h2 { margin: 0; font-size: 1.25rem; }
+.close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+.modal-body { padding: 1.5rem; }
+.export-tabs { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.export-tabs button {
+    background: none;
+    border: 1px solid var(--e-border);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.export-tabs button.active { background: #e6f5eb; border-color: var(--e-primary); color: var(--e-primary); font-weight: 600;}
+.export-output {
+    width: 100%;
+    height: 300px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    padding: 1rem;
+    border: 1px solid var(--e-border);
+    background: #fafbfc;
+    white-space: pre;
+    overflow: auto;
+}
+.modal footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--e-border);
+    text-align: right;
+    background: #fafbfc;
+}

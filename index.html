@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lugarde Visual Template Builder</title>
+    <link rel="stylesheet" href="editor.css">
+    
+    <!-- Fonts used by the Template -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- The exact cloned scoped styles from the landing page -->
+    <link rel="stylesheet" href="template-styles.css">
+
+    <!-- Vue 3 (CDN for zero-build setup) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body id="app">
+    <!-- TOP NAVBAR -->
+    <header class="builder-nav">
+        <div class="nav-brand">
+            <span class="material-symbols-outlined">edit_square</span>
+            <strong>Lugarde</strong> Template Builder
+        </div>
+        <div>
+            <button @click="exportBlocks" class="btn-primary">
+                <span class="material-symbols-outlined">download</span> Export Magento Blocks
+            </button>
+        </div>
+    </header>
+
+    <div class="builder-layout">
+        <!-- LEFT PANEL: Editor Fields -->
+        <aside class="builder-sidebar">
+            <div class="sidebar-tabs">
+                <button :class="{ active: activeTab === 'hero' }" @click="activeTab = 'hero'">Hero</button>
+                <button :class="{ active: activeTab === 'categories' }" @click="activeTab = 'categories'">Categories</button>
+                <button :class="{ active: activeTab === 'technical' }" @click="activeTab = 'technical'">Technical</button>
+                <button :class="{ active: activeTab === 'cta' }" @click="activeTab = 'cta'">Footer & CTA</button>
+            </div>
+
+            <div class="sidebar-content">
+                <!-- HERO TAB -->
+                <div v-show="activeTab === 'hero'">
+                    <div class="form-group">
+                        <label>Doc Reference / Tag</label>
+                        <input type="text" v-model="state.heroTag">
+                    </div>
+                    <div class="form-group">
+                        <label>Main Headline</label>
+                        <textarea v-model="state.heroTitle"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Description Paragraph</label>
+                        <textarea v-model="state.heroDesc" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Button 1 Text</label>
+                        <input type="text" v-model="state.heroBtn1">
+                    </div>
+                    <div class="form-group">
+                        <label>Button 1 Link URL</label>
+                        <input type="text" v-model="state.heroBtn1Url">
+                    </div>
+                    <div class="form-group">
+                        <label>Button 2 Text</label>
+                        <input type="text" v-model="state.heroBtn2">
+                    </div>
+                    <div class="form-group">
+                        <label>Button 2 Link URL</label>
+                        <input type="text" v-model="state.heroBtn2Url">
+                    </div>
+                    
+                    <h4 class="settings-divider">Specs Row</h4>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Spec 1 Label</label>
+                            <input type="text" v-model="state.heroSpec1Label">
+                            <input type="text" v-model="state.heroSpec1Value" placeholder="Value">
+                        </div>
+                        <div class="form-group">
+                            <label>Spec 2 Label</label>
+                            <input type="text" v-model="state.heroSpec2Label">
+                            <input type="text" v-model="state.heroSpec2Value" placeholder="Value">
+                        </div>
+                        <div class="form-group">
+                            <label>Spec 3 Label</label>
+                            <input type="text" v-model="state.heroSpec3Label">
+                            <input type="text" v-model="state.heroSpec3Value" placeholder="Value">
+                        </div>
+                    </div>
+
+                    <h4 class="settings-divider">Media & Quote</h4>
+                    <div class="form-group">
+                        <label>Hero Image URL</label>
+                        <input type="text" v-model="state.heroImage">
+                    </div>
+                    <div class="form-group">
+                        <label>Quote Text overlay</label>
+                        <textarea v-model="state.heroQuote"></textarea>
+                    </div>
+                </div>
+
+                <!-- CATEGORIES TAB -->
+                <div v-show="activeTab === 'categories'">
+                    <p class="section-help">Update the 4 hovering category grid boxes.</p>
+                    <div v-for="(cat, idx) in state.categories" :key="idx" class="category-editor-card">
+                        <h5>Box {{ idx + 1 }}</h5>
+                        <div class="form-group">
+                            <label>Overline (Module label)</label>
+                            <input type="text" v-model="cat.module">
+                        </div>
+                        <div class="form-group">
+                            <label>Main Title</label>
+                            <input type="text" v-model="cat.title">
+                        </div>
+                        <div class="form-group">
+                            <label>Link Text</label>
+                            <input type="text" v-model="cat.linkText">
+                        </div>
+                        <div class="form-group">
+                            <label>URL Destination</label>
+                            <input type="text" v-model="cat.linkUrl">
+                        </div>
+                        <div class="form-group">
+                            <label>Material Icon Name</label>
+                            <input type="text" v-model="cat.icon">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONFIGURATOR CTA & TECHNICAL TAB -->
+                <div v-show="activeTab === 'technical'">
+                    <h4 class="settings-divider">Mid-Page CTA</h4>
+                    <div class="form-group">
+                        <label>CTA Title</label>
+                        <input type="text" v-model="state.configCtaTitle">
+                    </div>
+                    <div class="form-group">
+                        <label>CTA Subtitle</label>
+                        <textarea v-model="state.configCtaSub"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>CTA Button Text & Link</label>
+                        <input type="text" v-model="state.configCtaBtn">
+                        <input type="text" v-model="state.configCtaBtnUrl" placeholder="Link URL" style="margin-top:0.5rem">
+                    </div>
+
+                    <h4 class="settings-divider">Technical Header</h4>
+                    <div class="form-group">
+                        <label>Engineering Tag</label>
+                        <input type="text" v-model="state.techTag">
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" v-model="state.techTitle">
+                    </div>
+                    <div class="form-group">
+                        <label>Subtitle Paragraph</label>
+                        <textarea v-model="state.techSub"></textarea>
+                    </div>
+
+                    <h4 class="settings-divider">Technical Feature 1</h4>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" v-model="state.tech1Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea v-model="state.tech1Desc"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" v-model="state.tech1Img">
+                    </div>
+
+                    <h4 class="settings-divider">Technical Feature 2</h4>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" v-model="state.tech2Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea v-model="state.tech2Desc"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" v-model="state.tech2Img">
+                    </div>
+                </div>
+
+                <!-- FOOTER CTA TAB -->
+                <div v-show="activeTab === 'cta'">
+                    <p class="section-help">Edit the final dark section at the bottom.</p>
+                    <div class="form-group">
+                        <label>Eyebrow Tag</label>
+                        <input type="text" v-model="state.footerTag">
+                    </div>
+                    <div class="form-group">
+                        <label>Final Title (Accepts HTML &lt;br/&gt;)</label>
+                        <textarea v-model="state.footerTitle"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Subtitle / Description</label>
+                        <textarea v-model="state.footerDesc" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Primary White Button</label>
+                        <input type="text" v-model="state.footerBtn1">
+                        <input type="text" v-model="state.footerBtn1Url" placeholder="Link URL" style="margin-top:0.5rem">
+                    </div>
+                    <div class="form-group">
+                        <label>Secondary Ghost Button</label>
+                        <input type="text" v-model="state.footerBtn2">
+                        <input type="text" v-model="state.footerBtn2Url" placeholder="Link URL" style="margin-top:0.5rem">
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- RIGHT PANEL: Live Preview rendering -->
+        <main class="builder-preview" id="live-preview-container">
+            <!-- This div is what scopes the template CSS so it doesn't leak out -->
+            <div class="lugarde-premier-page" v-html="previewHtml"></div>
+        </main>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal-overlay" v-if="showExport" @click.self="showExport = false">
+        <div class="modal">
+            <header>
+                <h2>Ready for Magento</h2>
+                <button @click="showExport = false" class="close-btn">&times;</button>
+            </header>
+            <div class="modal-body">
+                <p>Here are your 4 generated HTML blocks. Copy and paste these exactly into your Magento CMS Blocks.</p>
+                <div class="export-tabs">
+                    <button :class="{active: exportTab === 1}" @click="exportTab = 1">Block 1: Shared Styles</button>
+                    <button :class="{active: exportTab === 3}" @click="exportTab = 3">Block 3: Hero</button>
+                    <button :class="{active: exportTab === 4}" @click="exportTab = 4">Block 4: Path & Tech</button>
+                    <button :class="{active: exportTab === 5}" @click="exportTab = 5">Block 5: CTA</button>
+                </div>
+                <!-- Textareas representing the exported blocks -->
+                <textarea readonly class="export-output" v-if="exportTab === 1" :value="exportedBlocks.block1"></textarea>
+                <textarea readonly class="export-output" v-if="exportTab === 3" :value="exportedBlocks.block3"></textarea>
+                <textarea readonly class="export-output" v-if="exportTab === 4" :value="exportedBlocks.block4"></textarea>
+                <textarea readonly class="export-output" v-if="exportTab === 5" :value="exportedBlocks.block5"></textarea>
+            </div>
+            <footer>
+                <button @click="copyActiveBlock" class="btn-primary">Copy Active Block</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

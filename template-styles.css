@@ -1,0 +1,988 @@
+
+/* ==========================================================================
+   LUGARDE PREMIER — SCOPED DESIGN SYSTEM
+   All rules prefixed with .lugarde-premier-page to avoid affecting the rest
+   of the Magento store.
+   ========================================================================== */
+
+/* ---------- RESET & BASE ---------- */
+.lugarde-premier-page {
+  --lp-primary: #051927;
+  --lp-primary-container: #1b2e3c;
+  --lp-on-primary: #ffffff;
+  --lp-on-primary-container: #8296a7;
+  --lp-on-primary-fixed: #091d2b;
+  --lp-on-primary-fixed-variant: #364958;
+  --lp-primary-fixed: #d1e5f8;
+  --lp-primary-fixed-dim: #b5c9db;
+  --lp-inverse-primary: #b5c9db;
+
+  --lp-secondary: #536252;
+  --lp-on-secondary: #ffffff;
+  --lp-secondary-container: #d4e4d0;
+  --lp-on-secondary-container: #586757;
+  --lp-secondary-fixed: #d7e7d3;
+  --lp-secondary-fixed-dim: #bbcbb8;
+  --lp-on-secondary-fixed: #111f12;
+  --lp-on-secondary-fixed-variant: #3c4a3c;
+
+  /* Lawsons Brand Colours */
+  --lp-brand-green: #009640;
+  --lp-brand-green-dark: #007a34;
+  --lp-brand-green-light: rgba(0, 150, 64, 0.12);
+  --lp-brand-yellow: #FFE600;
+  --lp-brand-yellow-dim: rgba(255, 230, 0, 0.15);
+
+  --lp-tertiary: #003d1a;
+  --lp-on-tertiary: #ffffff;
+  --lp-tertiary-container: #005a28;
+  --lp-on-tertiary-container: #009640;
+  --lp-tertiary-fixed: #b8f5c8;
+  --lp-tertiary-fixed-dim: #7ad992;
+  --lp-on-tertiary-fixed: #003d1a;
+  --lp-on-tertiary-fixed-variant: #009640;
+
+  --lp-surface: #fcfcfc;
+  --lp-surface-dim: #dadadc;
+  --lp-surface-bright: #fcfcfc;
+  --lp-surface-container-lowest: #ffffff;
+  --lp-surface-container-low: #f3f3f6;
+  --lp-surface-container: #eeeef0;
+  --lp-surface-container-high: #e8e8ea;
+  --lp-surface-container-highest: #e2e2e5;
+  --lp-surface-variant: #e2e2e5;
+  --lp-surface-tint: #4e6170;
+
+  --lp-on-surface: #1a1c1e;
+  --lp-on-surface-variant: #43474b;
+  --lp-on-background: #1a1c1e;
+  --lp-background: #fcfcfc;
+  --lp-inverse-surface: #2f3133;
+  --lp-inverse-on-surface: #f0f0f3;
+
+  --lp-outline: #73777c;
+  --lp-outline-variant: #c3c7cc;
+
+  --lp-error: #ba1a1a;
+  --lp-on-error: #ffffff;
+  --lp-error-container: #ffdad6;
+  --lp-on-error-container: #93000a;
+
+  /* Fonts */
+  --lp-font-headline: 'Noto Serif', serif;
+  --lp-font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --lp-font-mono: 'Space Mono', monospace;
+
+  /* Transitions */
+  --lp-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --lp-duration: 300ms;
+
+  font-family: var(--lp-font-body) !important;
+  color: var(--lp-on-surface) !important;
+  background-color: var(--lp-surface) !important;
+  line-height: 1.6 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.lugarde-premier-page *,
+.lugarde-premier-page *::before,
+.lugarde-premier-page *::after {
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+}
+
+.lugarde-premier-page img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.lugarde-premier-page a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.lugarde-premier-page button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.lugarde-premier-page ul {
+  list-style: none;
+}
+
+.lugarde-premier-page ::selection {
+  background-color: var(--lp-brand-yellow);
+  color: var(--lp-primary);
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+.lugarde-premier-page .lp-font-headline {
+  font-family: var(--lp-font-headline) !important;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-font-body {
+  font-family: var(--lp-font-body) !important;
+}
+
+.lugarde-premier-page .lp-font-mono {
+  font-family: var(--lp-font-mono) !important;
+}
+
+.lugarde-premier-page .lp-label {
+  font-family: var(--lp-font-mono) !important;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-tag {
+  font-family: var(--lp-font-mono) !important;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-weight: 600;
+}
+
+/* ---------- MATERIAL ICONS ---------- */
+.lugarde-premier-page .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  font-size: 24px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ---------- BLUEPRINT GRID BACKGROUND ---------- */
+.lugarde-premier-page .lp-blueprint-grid {
+  background-image: radial-gradient(circle, var(--lp-surface-container-highest) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ---------- CONTAINER ---------- */
+.lugarde-premier-page .lp-container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .lugarde-premier-page .lp-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* ---------- BUTTONS ---------- */
+.lugarde-premier-page .lp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--lp-font-body) !important;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  transition: all var(--lp-duration) var(--lp-ease);
+  white-space: nowrap;
+}
+
+.lugarde-premier-page .lp-btn-primary {
+  background-color: var(--lp-primary);
+  color: var(--lp-on-primary);
+  padding: 1.25rem 2.5rem;
+}
+
+.lugarde-premier-page .lp-btn-primary:hover {
+  background-color: var(--lp-brand-green-dark);
+}
+
+.lugarde-premier-page .lp-btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--lp-outline);
+  color: var(--lp-on-surface);
+  padding: 1.25rem 2.5rem;
+}
+
+.lugarde-premier-page .lp-btn-outline:hover {
+  background-color: var(--lp-surface-container-low);
+}
+
+.lugarde-premier-page .lp-btn-nav {
+  border: 1px solid var(--lp-primary);
+  color: var(--lp-primary);
+  padding: 0.5rem 1.5rem;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  transition: all var(--lp-duration) var(--lp-ease);
+}
+
+.lugarde-premier-page .lp-btn-nav:hover {
+  background-color: var(--lp-primary);
+  color: var(--lp-on-primary);
+}
+
+.lugarde-premier-page .lp-btn-cta-white {
+  background-color: #ffffff;
+  color: var(--lp-primary);
+  padding: 1.5rem 3rem;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  transition: all var(--lp-duration) var(--lp-ease);
+}
+
+.lugarde-premier-page .lp-btn-cta-white:hover {
+  background-color: var(--lp-surface-container-high);
+}
+
+.lugarde-premier-page .lp-btn-cta-ghost {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  padding: 1.5rem 3rem;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  transition: all var(--lp-duration) var(--lp-ease);
+}
+
+.lugarde-premier-page .lp-btn-cta-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- BORDER LINES (GHOST BORDERS) ---------- */
+.lugarde-premier-page .lp-border-b {
+  border-bottom: 1px solid rgba(195, 199, 204, 0.3);
+}
+
+.lugarde-premier-page .lp-border-r {
+  border-right: 1px solid rgba(195, 199, 204, 0.3);
+}
+
+.lugarde-premier-page .lp-border-t {
+  border-top: 1px solid rgba(195, 199, 204, 0.3);
+}
+
+.lugarde-premier-page .lp-border-y {
+  border-top: 1px solid rgba(195, 199, 204, 0.3);
+  border-bottom: 1px solid rgba(195, 199, 204, 0.3);
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.lugarde-premier-page .lp-hero {
+  position: relative;
+  min-height: 100vh;
+  border-bottom: 1px solid rgba(195, 199, 204, 0.3);
+}
+
+.lugarde-premier-page .lp-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+@media (min-width: 1024px) {
+  .lugarde-premier-page .lp-hero__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.lugarde-premier-page .lp-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .lugarde-premier-page .lp-hero__content {
+    padding: 6rem 5rem 6rem 5rem;
+    border-right: 1px solid rgba(195, 199, 204, 0.3);
+  }
+}
+
+.lugarde-premier-page .lp-hero__brand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .lugarde-premier-page .lp-hero__brand {
+    padding: 2.5rem 5rem;
+  }
+}
+
+.lugarde-premier-page .lp-hero__lugarde-logo {
+  height: 28px;
+  width: auto;
+  filter: brightness(0);
+}
+
+.lugarde-premier-page .lp-hero__dealer-badge {
+  font-family: var(--lp-font-mono) !important;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--lp-brand-green);
+  font-weight: 700;
+  border-left: 1px solid var(--lp-outline-variant);
+  padding-left: 1.5rem;
+}
+
+.lugarde-premier-page .lp-hero__tag {
+  font-family: var(--lp-font-mono) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--lp-brand-green);
+  margin-bottom: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lugarde-premier-page .lp-hero__tag-line {
+  display: inline-block;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--lp-brand-yellow);
+}
+
+.lugarde-premier-page .lp-hero__title {
+  font-family: var(--lp-font-headline) !important;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  color: var(--lp-primary);
+  line-height: 0.95;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-hero__title em {
+  font-style: italic;
+}
+
+.lugarde-premier-page .lp-hero__desc {
+  font-family: var(--lp-font-body) !important;
+  font-size: 1.125rem;
+  color: var(--lp-on-surface-variant);
+  max-width: 32rem;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.lugarde-premier-page .lp-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.lugarde-premier-page .lp-hero__specs {
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(195, 199, 204, 0.3);
+  display: flex;
+  gap: 3rem;
+}
+
+.lugarde-premier-page .lp-hero__spec-label {
+  display: block;
+  font-family: var(--lp-font-mono) !important;
+  font-size: 10px;
+  color: var(--lp-on-surface-variant);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.lugarde-premier-page .lp-hero__spec-value {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-hero__image-wrap {
+  position: relative;
+  background-color: var(--lp-surface-container-low);
+  min-height: 500px;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .lugarde-premier-page .lp-hero__image-wrap {
+    min-height: 100vh;
+  }
+}
+
+.lugarde-premier-page .lp-hero__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.lugarde-premier-page .lp-hero__quote {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: var(--lp-primary);
+  color: var(--lp-on-primary);
+  padding: 2rem;
+  max-width: 18rem;
+  z-index: 2;
+}
+
+.lugarde-premier-page .lp-hero__quote .material-symbols-outlined {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.lugarde-premier-page .lp-hero__quote p {
+  font-family: var(--lp-font-body) !important;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ================================================================
+   CATEGORY SELECTION (4 Boxes)
+   ================================================================ */
+.lugarde-premier-page .lp-categories {
+  padding: 0;
+  border-bottom: 1px solid rgba(195, 199, 204, 0.3);
+  background-color: var(--lp-surface-bright);
+}
+
+.lugarde-premier-page .lp-categories__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .lugarde-premier-page .lp-categories__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .lugarde-premier-page .lp-categories__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.lugarde-premier-page .lp-category-card {
+  position: relative;
+  padding: 3rem 2rem;
+  overflow: hidden;
+  transition: background-color 500ms var(--lp-ease);
+  border-bottom: 1px solid rgba(195, 199, 204, 0.3);
+}
+
+@media (min-width: 640px) {
+  .lugarde-premier-page .lp-category-card:nth-child(odd) {
+    border-right: 1px solid rgba(195, 199, 204, 0.3);
+  }
+}
+
+@media (min-width: 1200px) {
+  .lugarde-premier-page .lp-category-card {
+    padding: 4rem 3rem;
+    border-bottom: none;
+    border-right: 1px solid rgba(195, 199, 204, 0.3);
+  }
+  .lugarde-premier-page .lp-category-card:last-child {
+    border-right: none;
+  }
+}
+
+.lugarde-premier-page .lp-category-card:hover {
+  background-color: var(--lp-surface-container);
+}
+
+.lugarde-premier-page .lp-category-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.lugarde-premier-page .lp-category-card__module {
+  font-family: var(--lp-font-mono) !important;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  display: block;
+  color: var(--lp-brand-green);
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-category-card__title {
+  font-family: var(--lp-font-headline) !important;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  color: var(--lp-on-surface);
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-category-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--lp-font-mono) !important;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: auto;
+  transition: color var(--lp-duration) var(--lp-ease);
+}
+
+.lugarde-premier-page .lp-category-card:hover .lp-category-card__link {
+  color: var(--lp-brand-green);
+}
+
+.lugarde-premier-page .lp-category-card__link .material-symbols-outlined {
+  font-size: 0.875rem;
+}
+
+.lugarde-premier-page .lp-category-card__bg-icon {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  font-size: 12rem !important;
+  line-height: 1;
+  color: var(--lp-primary);
+  opacity: 0.03;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ================================================================
+   CONFIGURATOR CTA (Block 4)
+   ================================================================ */
+.lugarde-premier-page .lp-config-cta {
+  background-color: var(--lp-primary-container);
+  border-bottom: 1px solid rgba(195, 199, 204, 0.3);
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.lugarde-premier-page .lp-config-cta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .lugarde-premier-page .lp-config-cta__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 2rem 4rem;
+  }
+}
+
+.lugarde-premier-page .lp-config-cta__text {
+  max-width: 32rem;
+}
+
+.lugarde-premier-page .lp-config-cta__title {
+  font-family: var(--lp-font-headline) !important;
+  font-size: 2rem;
+  color: var(--lp-on-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-config-cta__subtitle {
+  font-family: var(--lp-font-body) !important;
+  font-size: 1rem;
+  color: var(--lp-on-primary-container);
+}
+
+.lugarde-premier-page .lp-config-cta__button {
+  background-color: var(--lp-brand-green);
+  color: #ffffff;
+  padding: 1.25rem 2.5rem;
+  border-radius: 4px;
+  font-family: var(--lp-font-mono) !important;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  transition: background-color var(--lp-duration) var(--lp-ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+}
+
+.lugarde-premier-page .lp-config-cta__button:hover {
+  background-color: var(--lp-brand-green-dark);
+}
+
+.lugarde-premier-page .lp-config-cta__button .material-symbols-outlined {
+  font-size: 1.25rem;
+}
+
+/* ================================================================
+   TECHNICAL COMPARISON — "Mastery in Every Joint"
+   ================================================================ */
+.lugarde-premier-page .lp-technical {
+  padding: 8rem 0;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.lugarde-premier-page .lp-technical__bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.lugarde-premier-page .lp-technical__header {
+  max-width: 48rem;
+  margin-bottom: 6rem;
+  position: relative;
+  z-index: 2;
+}
+
+.lugarde-premier-page .lp-technical__tag {
+  font-family: var(--lp-font-mono) !important;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--lp-on-surface-variant);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lugarde-premier-page .lp-technical__tag-line {
+  display: inline-block;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--lp-brand-yellow);
+}
+
+.lugarde-premier-page .lp-technical__title {
+  font-family: var(--lp-font-headline) !important;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  color: var(--lp-primary);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-technical__subtitle {
+  font-family: var(--lp-font-body) !important;
+  font-size: 1.25rem;
+  color: var(--lp-on-surface-variant);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.lugarde-premier-page .lp-technical__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .lugarde-premier-page .lp-technical__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.lugarde-premier-page .lp-tech-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.lugarde-premier-page .lp-tech-card__img-wrap {
+  padding: 0.5rem;
+}
+
+.lugarde-premier-page .lp-tech-card__img-wrap--premier {
+  border: 1px solid rgba(5, 25, 39, 0.2);
+  background-color: rgba(5, 25, 39, 0.02);
+}
+
+.lugarde-premier-page .lp-tech-card__img-wrap--standard {
+  border: 1px solid rgba(195, 199, 204, 0.3);
+}
+
+.lugarde-premier-page .lp-tech-card__img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.lugarde-premier-page .lp-tech-card__body {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.lugarde-premier-page .lp-tech-card__num {
+  color: var(--lp-brand-green);
+  font-family: var(--lp-font-mono) !important;
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.lugarde-premier-page .lp-tech-card__content-title {
+  font-family: var(--lp-font-headline) !important;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--lp-on-surface);
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-tech-card__content-desc {
+  font-family: var(--lp-font-body) !important;
+  color: var(--lp-on-surface-variant);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.lugarde-premier-page .lp-tech-card__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.lugarde-premier-page .lp-tech-stat {
+  border-left: 2px solid var(--lp-brand-green);
+  padding-left: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.lugarde-premier-page .lp-tech-stat__label {
+  display: block;
+  font-size: 10px;
+  font-family: var(--lp-font-mono) !important;
+  text-transform: uppercase;
+  color: var(--lp-brand-green);
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-tech-stat__value {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* ================================================================
+   TRADE CREDENTIALS
+   ================================================================ */
+.lugarde-premier-page .lp-credentials {
+  padding: 6rem 0;
+  background-color: var(--lp-surface-container-low);
+  border-top: 1px solid rgba(195, 199, 204, 0.3);
+  border-bottom: 1px solid rgba(195, 199, 204, 0.3);
+}
+
+.lugarde-premier-page .lp-credentials__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .lugarde-premier-page .lp-credentials__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.lugarde-premier-page .lp-credentials__heading {
+  max-width: 28rem;
+}
+
+.lugarde-premier-page .lp-credentials__tag {
+  font-family: var(--lp-font-mono) !important;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--lp-brand-green);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-credentials__title {
+  font-family: var(--lp-font-headline) !important;
+  font-size: 1.875rem;
+  color: var(--lp-primary);
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-credentials__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem 4rem;
+}
+
+.lugarde-premier-page .lp-credential {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lugarde-premier-page .lp-credential .material-symbols-outlined {
+  font-size: 2.5rem;
+  color: var(--lp-brand-green);
+}
+
+.lugarde-premier-page .lp-credential__name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lugarde-premier-page .lp-credential__desc {
+  font-size: 10px;
+  color: var(--lp-on-surface-variant);
+  font-family: var(--lp-font-mono) !important;
+}
+
+/* ================================================================
+   CTA SECTION
+   ================================================================ */
+.lugarde-premier-page .lp-cta {
+  position: relative;
+  padding: 8rem 0;
+  background-color: var(--lp-primary);
+  overflow: hidden;
+}
+
+.lugarde-premier-page .lp-cta__lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.lugarde-premier-page .lp-cta__line-v {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--lp-on-primary);
+}
+
+.lugarde-premier-page .lp-cta__line-v:nth-child(1) { left: 25%; }
+.lugarde-premier-page .lp-cta__line-v:nth-child(2) { left: 75%; }
+
+.lugarde-premier-page .lp-cta__line-h {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--lp-on-primary);
+  top: 33.33%;
+}
+
+.lugarde-premier-page .lp-cta__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.lugarde-premier-page .lp-cta__tag {
+  font-family: var(--lp-font-mono) !important;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.lugarde-premier-page .lp-cta__title {
+  font-family: var(--lp-font-headline) !important;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--lp-on-primary);
+  margin-bottom: 3rem;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.lugarde-premier-page .lp-cta__desc {
+  font-family: var(--lp-font-body) !important;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 4rem;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.lugarde-premier-page .lp-cta__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .lugarde-premier-page .lp-cta__buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+
+
