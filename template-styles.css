@@ -138,7 +138,7 @@
   font-family: var(--lp-font-mono) !important;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.05em;
   font-weight: 700;
 }
 
@@ -146,7 +146,7 @@
   font-family: var(--lp-font-mono) !important;
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.05em;
   font-weight: 600;
 }
 
@@ -189,7 +189,7 @@
   font-family: var(--lp-font-body) !important;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   font-weight: 700;
   transition: all var(--lp-duration) var(--lp-ease);
   white-space: nowrap;
@@ -222,7 +222,7 @@
   padding: 0.5rem 1.5rem;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   font-weight: 700;
   transition: all var(--lp-duration) var(--lp-ease);
 }
@@ -238,7 +238,7 @@
   padding: 1.5rem 3rem;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   font-weight: 700;
   transition: all var(--lp-duration) var(--lp-ease);
 }
@@ -254,7 +254,7 @@
   padding: 1.5rem 3rem;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   font-weight: 700;
   transition: all var(--lp-duration) var(--lp-ease);
 }
@@ -346,7 +346,7 @@
   font-family: var(--lp-font-mono) !important;
   font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.05em;
   color: var(--lp-brand-green);
   font-weight: 700;
   border-left: 1px solid var(--lp-outline-variant);
@@ -356,7 +356,7 @@
 .lugarde-premier-page .lp-hero__tag {
   font-family: var(--lp-font-mono) !important;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.05em;
   color: var(--lp-brand-green);
   margin-bottom: 2rem;
   font-size: 0.75rem;
@@ -538,7 +538,7 @@
   font-family: var(--lp-font-mono) !important;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
   display: block;
   color: var(--lp-brand-green);
@@ -562,7 +562,7 @@
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.05em;
   margin-top: auto;
   transition: color var(--lp-duration) var(--lp-ease);
 }
@@ -643,7 +643,7 @@
   font-family: var(--lp-font-mono) !important;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   font-weight: 700;
   transition: background-color var(--lp-duration) var(--lp-ease);
   display: inline-flex;
@@ -688,7 +688,7 @@
   font-family: var(--lp-font-mono) !important;
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.05em;
   color: var(--lp-on-surface-variant);
   margin-bottom: 1.5rem;
   display: flex;
@@ -848,7 +848,7 @@
   font-family: var(--lp-font-mono) !important;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   color: var(--lp-brand-green);
   margin-bottom: 0.5rem;
   font-weight: 700;
@@ -939,7 +939,7 @@
   font-family: var(--lp-font-mono) !important;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 2rem;
   display: block;
@@ -983,6 +983,7 @@
     justify-content: center;
   }
 }
+
 
 
 
