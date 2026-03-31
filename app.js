@@ -72,6 +72,16 @@ const defaultState = {
     tech2Desc: "Lugarde exclusively uses pine from northern regions where cold climates force trees to grow slowly, resulting in tighter growth rings and naturally denser, more durable material.",
     tech2Img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCgIHU0y4pjJBfrUT6x9862aC8bydeDd4_w6KSBe9YLeuK2TXJ4MG764Dbg671opu8h25gOaJCZ_x-yedD7vBKHtl6MiBUJSFjMPmSibIVyiote753a5sfCZf-Kc3mnklO4_uimKBRomikCREZeLBJZt5G7f-p5DsGtU9kjnJY2ZExSyr4rJ_S-1Ne1IIWbKh0KWkxRQCzZn4GrBQJ2RjyuxRUsG2gnG_KQc1qsIzZR2VSMgbaW_jLeBt7BgKj_IL8iarQa-ViGsGA",
 
+    // TRADE CREDENTIALS
+    credTag: "Compliance & Standards",
+    credTitle: "Trade Credentials",
+    credentials: [
+        { icon: "verified", name: "FSC & PEFC", desc: "Timber Chain of Custody" },
+        { icon: "description", name: "ISO 9001:2015", desc: "Quality Management System" },
+        { icon: "architecture", name: "RIBA NBS", desc: "BIM Objects Available" },
+        { icon: "security", name: "LPS 1175", desc: "Security Rated Options" }
+    ],
+
     // FOOTER CTA
     footerTag: "Ready for Construction",
     footerTitle: "Your project, <br/>our engineering.",
@@ -267,38 +277,19 @@ const getBlock5 = (s) => `
   <div class="lp-container">
     <div class="lp-credentials__inner">
       <div class="lp-credentials__heading">
-        <h3 class="lp-credentials__tag">Compliance &amp; Standards</h3>
-        <h4 class="lp-credentials__title">Trade Credentials</h4>
+        <h3 class="lp-credentials__tag">${s.credTag}</h3>
+        <h4 class="lp-credentials__title">${s.credTitle}</h4>
       </div>
       <div class="lp-credentials__items">
+        ${s.credentials.map(c => `
         <div class="lp-credential">
-          <span class="material-symbols-outlined">verified</span>
+          <span class="material-symbols-outlined">${c.icon}</span>
           <div>
-            <span class="lp-credential__name">FSC &amp; PEFC</span>
-            <span class="lp-credential__desc">Timber Chain of Custody</span>
+            <span class="lp-credential__name">${c.name}</span>
+            <span class="lp-credential__desc">${c.desc}</span>
           </div>
         </div>
-        <div class="lp-credential">
-          <span class="material-symbols-outlined">description</span>
-          <div>
-            <span class="lp-credential__name">ISO 9001:2015</span>
-            <span class="lp-credential__desc">Quality Management System</span>
-          </div>
-        </div>
-        <div class="lp-credential">
-          <span class="material-symbols-outlined">architecture</span>
-          <div>
-            <span class="lp-credential__name">RIBA NBS</span>
-            <span class="lp-credential__desc">BIM Objects Available</span>
-          </div>
-        </div>
-        <div class="lp-credential">
-          <span class="material-symbols-outlined">security</span>
-          <div>
-            <span class="lp-credential__name">LPS 1175</span>
-            <span class="lp-credential__desc">Security Rated Options</span>
-          </div>
-        </div>
+        `).join('')}
       </div>
     </div>
   </div>

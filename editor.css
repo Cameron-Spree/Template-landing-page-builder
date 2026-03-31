@@ -73,12 +73,14 @@ body {
 .sidebar-tabs {
     display: flex;
     border-bottom: 1px solid var(--e-border);
+    overflow-x: auto;
+    white-space: nowrap;
 }
 .sidebar-tabs button {
-    flex: 1;
+    flex: 0 0 auto;
     background: none;
     border: none;
-    padding: 1rem 0;
+    padding: 1rem 1.2rem;
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;

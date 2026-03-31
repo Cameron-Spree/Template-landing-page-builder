@@ -38,6 +38,7 @@
                 <button :class="{ active: activeTab === 'hero' }" @click="activeTab = 'hero'">Hero</button>
                 <button :class="{ active: activeTab === 'categories' }" @click="activeTab = 'categories'">Categories</button>
                 <button :class="{ active: activeTab === 'technical' }" @click="activeTab = 'technical'">Technical</button>
+                <button :class="{ active: activeTab === 'credentials' }" @click="activeTab = 'credentials'">Trade</button>
                 <button :class="{ active: activeTab === 'cta' }" @click="activeTab = 'cta'">Footer</button>
             </div>
 
@@ -279,6 +280,36 @@
                     <div class="form-group">
                         <label>Image URL</label>
                         <input type="text" v-model="state.tech2Img">
+                    </div>
+                </div>
+
+                <!-- TRADE CREDENTIALS TAB -->
+                <div v-show="activeTab === 'credentials'">
+                    <p class="section-help">Update the Trade Credentials text and icon list.</p>
+                    <div class="form-group">
+                        <label>Section Tag</label>
+                        <input type="text" v-model="state.credTag">
+                    </div>
+                    <div class="form-group">
+                        <label>Main Title</label>
+                        <input type="text" v-model="state.credTitle">
+                    </div>
+                    
+                    <h4 class="settings-divider">Credential Items</h4>
+                    <div v-for="(cred, idx) in state.credentials" :key="idx" class="category-editor-card">
+                        <h5>Item {{ idx + 1 }}</h5>
+                        <div class="form-group">
+                            <label>Material Icon Name</label>
+                            <input type="text" v-model="cred.icon">
+                        </div>
+                        <div class="form-group">
+                            <label>Name / Heading</label>
+                            <input type="text" v-model="cred.name">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" v-model="cred.desc">
+                        </div>
                     </div>
                 </div>
 
