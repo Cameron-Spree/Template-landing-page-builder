@@ -2,21 +2,21 @@ const { createApp, reactive, computed } = Vue;
 
 const defaultState = {
     // HERO
-    heroTag: "Grade A Timber Engineering",
-    heroTitle: "Defining the \n<em>Technical</em> \nStandard.",
-    heroDesc: "Precision-milled northern timber meets advanced joinery. Lugarde Premier isn't just a garden building; it's a structural masterpiece engineered for the British climate.",
-    heroBtn1: "View Technical Specs",
+    heroTag: "Lugarde Summer Houses at Lawsons",
+    heroTitle: "Enjoy the outdoors with \n<em>Lugarde</em>",
+    heroDesc: "Upgrade your outdoor space with a professional-grade summer house, providing a durable extension for work, hobbies, or hosting. From garden offices to sheltered retreats, these robust structures offer a versatile, high-performance solution for year-round utility.",
+    heroBtn1: "View Select Range",
     heroBtn1Url: "#",
     heroBtn2: "3D Configurator",
     heroBtn2Url: "#",
-    heroSpec1Label: "Wood Type",
-    heroSpec1Value: "PEFC Pine",
-    heroSpec2Label: "Wall Thickness",
-    heroSpec2Value: "28mm - 68mm",
-    heroSpec3Label: "Glazing",
-    heroSpec3Value: "Double-A Rated",
-    heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDkE7eS5fr_PXAyo0BV2BZVClNfJUieBTEAmaWRCdiZJszR4WuFezPVIm8y0uKagsbjUWeEE5CnyBnlyzHqpSxPCCnbO7VuATsyyU9tQA0DdadTq4ahpfH1OsZXc49TbODASO0CxcN2ulmF_N0L2F0U-q3DxHEJa2aqg7UnE702rJl66C8EFPt8ZgjjcZXbJIEadG0B8G4ZCtrzmnVgufmy7js-e8WGX5wUP_H6OADyEjnk44Rpavx8dsksMd-Il2mpUIqrfq8D_wI",
-    heroQuote: "\"Structural integrity is not a feature, it is the foundation of every Lugarde Premier design.\"",
+    heroSpec1Label: "Proven Heritage",
+    heroSpec1Value: "40+ Years",
+    heroSpec2Label: "Superior Build",
+    heroSpec2Value: "A-Brand Quality",
+    heroSpec3Label: "Expert Service",
+    heroSpec3Value: "5-Year Warranty",
+    heroImage: "https://www.lugarde.com/wp-content/uploads/sites/3/2025/09/Hellevoetsluis0119-HDR-1280x852.jpg",
+    heroQuote: "\"For more than 40 years, Lugarde has been designing and producing high-quality wooden summerhouses, log cabins, verandas, carports, garages, gazebos and holiday homes – also bespoke.\"",
     
     // CATEGORIES (4 Items)
     categories: [
@@ -266,6 +266,10 @@ createApp({
             return getBlock3(state) + "\\n" + getBlock4(state) + "\\n" + getBlock5(state);
         });
 
+        const wrapBlock = (htmlString) => {
+            return `<div class="lugarde-premier-page">\n${htmlString}\n</div>`;
+        };
+
         const exportBlocks = async () => {
             // Fetch Block 1 Shared Styles completely so we can output it.
             let block1Str = "";
@@ -277,6 +281,7 @@ createApp({
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 
+<!-- Magento scoped wrapper styles block -->
 <style>
 ${css}
 </style>`;
@@ -285,9 +290,10 @@ ${css}
             }
 
             exportedBlocks.block1 = block1Str;
-            exportedBlocks.block3 = getBlock3(state);
-            exportedBlocks.block4 = getBlock4(state);
-            exportedBlocks.block5 = getBlock5(state);
+            // Wrap the layout blocks so they independently pull in the scoped CSS
+            exportedBlocks.block3 = wrapBlock(getBlock3(state));
+            exportedBlocks.block4 = wrapBlock(getBlock4(state));
+            exportedBlocks.block5 = wrapBlock(getBlock5(state));
 
             showExport.value = true;
             exportTab.value = 1;
