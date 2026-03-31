@@ -7,6 +7,21 @@ const defaultState = {
     fontMono: "Space Mono",
     fontSize: "16",
 
+    // SCALES
+    scHeroTag: 1.0,
+    scHeroTitle: 1.0,
+    scHeroDesc: 1.0,
+    scHeroBtn: 1.0,
+    scHeroSpec: 1.0,
+    scCatTitle: 1.0,
+    scTechTag: 1.0,
+    scTechTitle: 1.0,
+    scTechDesc: 1.0,
+    scTechCardTitle: 1.0,
+    scTechCardDesc: 1.0,
+    scFooterTitle: 1.0,
+    scFooterDesc: 1.0,
+
     // HERO
     heroTag: "Lugarde Summer Houses at Lawsons",
     heroTitle: "Enjoy the outdoors with \n<em>Lugarde</em>",
@@ -60,6 +75,36 @@ const defaultState = {
 };
 
 // Global templates so we can use them in computed and export properties
+
+const getScaleCSS = (s) => `
+/* Granular Scale Overrides */
+.lugarde-premier-page .lp-hero__tag { font-size: calc(10px * ${s.scHeroTag}) !important; }
+@media(min-width: 1024px) { .lugarde-premier-page .lp-hero__tag { font-size: calc(12px * ${s.scHeroTag}) !important; } }
+
+.lugarde-premier-page .lp-hero__title { font-size: calc(3rem * ${s.scHeroTitle}) !important; }
+@media(min-width: 1024px) { .lugarde-premier-page .lp-hero__title { font-size: calc(4.5rem * ${s.scHeroTitle}) !important; } }
+
+.lugarde-premier-page .lp-hero__desc { font-size: calc(1rem * ${s.scHeroDesc}) !important; }
+.lugarde-premier-page .lp-hero__buttons .lp-btn { font-size: calc(0.8rem * ${s.scHeroBtn}) !important; }
+
+.lugarde-premier-page .lp-hero__spec-label { font-size: calc(0.7rem * ${s.scHeroSpec}) !important; }
+.lugarde-premier-page .lp-hero__spec-value { font-size: calc(1.25rem * ${s.scHeroSpec}) !important; }
+
+.lugarde-premier-page .lp-category-card__title { font-size: calc(2rem * ${s.scCatTitle}) !important; }
+
+.lugarde-premier-page .lp-technical__tag { font-size: calc(0.8rem * ${s.scTechTag}) !important; }
+.lugarde-premier-page .lp-technical__title { font-size: calc(2.5rem * ${s.scTechTitle}) !important; }
+@media(min-width: 768px) { .lugarde-premier-page .lp-technical__title { font-size: calc(3.5rem * ${s.scTechTitle}) !important; } }
+.lugarde-premier-page .lp-technical__subtitle { font-size: calc(1rem * ${s.scTechDesc}) !important; }
+
+.lugarde-premier-page .lp-tech-card__content-title { font-size: calc(1.5rem * ${s.scTechCardTitle}) !important; }
+.lugarde-premier-page .lp-tech-card__content-desc { font-size: calc(0.95rem * ${s.scTechCardDesc}) !important; }
+
+.lugarde-premier-page .lp-cta__title { font-size: calc(3rem * ${s.scFooterTitle}) !important; }
+@media(min-width: 768px) { .lugarde-premier-page .lp-cta__title { font-size: calc(4.5rem * ${s.scFooterTitle}) !important; } }
+.lugarde-premier-page .lp-cta__desc { font-size: calc(1.1rem * ${s.scFooterDesc}) !important; }
+`;
+
 const getBlock3 = (s) => `
 <section class="lp-hero lp-blueprint-grid" id="lugarde-hero">
   <div class="lp-hero__grid">
@@ -269,7 +314,7 @@ createApp({
         const exportedBlocks = reactive({ block1: '', block3: '', block4: '', block5: '' });
 
         const previewHtml = computed(() => {
-            return getBlock3(state) + "\\n" + getBlock4(state) + "\\n" + getBlock5(state);
+            return "<style>" + getScaleCSS(state) + "</style>\\n" + getBlock3(state) + "\\n" + getBlock4(state) + "\\n" + getBlock5(state);
         });
 
         const wrapBlock = (htmlString) => {
@@ -298,6 +343,8 @@ ${css}
     --lp-font-mono: '${state.fontMono}', monospace !important;
     font-size: ${state.fontSize}px !important;
 }
+
+${getScaleCSS(state)}
 </style>`;
             } catch (e) {
                 block1Str = "<!-- Please copy the contents of block-1-shared-styles.html directly from original source -->";

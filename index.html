@@ -34,6 +34,7 @@
         <aside class="builder-sidebar">
             <div class="sidebar-tabs">
                 <button :class="{ active: activeTab === 'design' }" @click="activeTab = 'design'">Design</button>
+                <button :class="{ active: activeTab === 'sizes' }" @click="activeTab = 'sizes'">Sizes</button>
                 <button :class="{ active: activeTab === 'hero' }" @click="activeTab = 'hero'">Hero</button>
                 <button :class="{ active: activeTab === 'categories' }" @click="activeTab = 'categories'">Categories</button>
                 <button :class="{ active: activeTab === 'technical' }" @click="activeTab = 'technical'">Technical</button>
@@ -69,6 +70,48 @@
                         <label>Base Font Size (px)</label>
                         <input type="number" v-model="state.fontSize" min="12" max="24" step="1">
                         <p class="section-help" style="margin-top: 0.5rem; font-size: 0.75rem;">Adjusting the base size scales all headings and spacing proportionally since the template uses responsive rem units.</p>
+                    </div>
+                </div>
+
+                <!-- SIZES TAB -->
+                <div v-show="activeTab === 'sizes'">
+                    <p class="section-help">Make specific elements larger or smaller using a scale multiplier (1.0 = Default, 1.5 = 50% larger).</p>
+                    
+                    <h4 class="settings-divider">Hero Section</h4>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Hero Tag</label><input type="number" step="0.1" v-model="state.scHeroTag"></div>
+                        <div class="form-group"><label>Hero Title</label><input type="number" step="0.1" v-model="state.scHeroTitle"></div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Paragraph</label><input type="number" step="0.1" v-model="state.scHeroDesc"></div>
+                        <div class="form-group"><label>Buttons</label><input type="number" step="0.1" v-model="state.scHeroBtn"></div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Specs Details</label><input type="number" step="0.1" v-model="state.scHeroSpec"></div>
+                    </div>
+
+                    <h4 class="settings-divider">Categories</h4>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Category Title</label><input type="number" step="0.1" v-model="state.scCatTitle"></div>
+                    </div>
+
+                    <h4 class="settings-divider">Technical Report</h4>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Section Tag</label><input type="number" step="0.1" v-model="state.scTechTag"></div>
+                        <div class="form-group"><label>Main Title</label><input type="number" step="0.1" v-model="state.scTechTitle"></div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Paragraph</label><input type="number" step="0.1" v-model="state.scTechDesc"></div>
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Card Titles</label><input type="number" step="0.1" v-model="state.scTechCardTitle"></div>
+                        <div class="form-group"><label>Card Desc</label><input type="number" step="0.1" v-model="state.scTechCardDesc"></div>
+                    </div>
+
+                    <h4 class="settings-divider">Footer CTA</h4>
+                    <div class="grid-2">
+                        <div class="form-group"><label>Final Title</label><input type="number" step="0.1" v-model="state.scFooterTitle"></div>
+                        <div class="form-group"><label>Paragraph</label><input type="number" step="0.1" v-model="state.scFooterDesc"></div>
                     </div>
                 </div>
 
