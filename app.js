@@ -65,7 +65,7 @@ const getBlock3 = (s) => `
   <div class="lp-hero__grid">
     <div class="lp-hero__content">
         <div class="lp-hero__brand">
-          <img src="https://www.lugarde.com/wp-content/uploads/2021/01/logo.png" alt="Lugarde Logo" class="lp-hero__lugarde-logo" onerror="this.src='https://www.lugarde.com/wp-content/themes/lugarde/images/logo.png'"/>
+          <img src="https://www.lugarde.com/wp-content/uploads/2021/01/logo.png" alt="Lugarde Logo" class="lp-hero__lugarde-logo" />
           <span class="lp-hero__dealer-badge">Authorised<br/>Premium Dealer</span>
         </div>
       <p class="lp-hero__tag">
