@@ -51,6 +51,16 @@
                 <div v-show="activeTab === 'design'">
                     <p class="section-help">Customize typography and scaling variables globally.</p>
                     
+                    <h4 class="settings-divider">Brand Theme</h4>
+                    <div class="form-group">
+                        <label>Connect to Website</label>
+                        <select v-model="state.brandTheme">
+                            <option value="lawsons">Lawsons (Green & Yellow)</option>
+                            <option value="avs">AVS Fencing (Blue & Brown)</option>
+                        </select>
+                        <p class="section-help" style="margin-top: 0.25rem;">Switches the subtle touch colours used for icons, underlines and highlights.</p>
+                    </div>
+
                     <h4 class="settings-divider">Typography Settings</h4>
                     <div class="form-group">
                         <label>Large Headings Font</label>
@@ -397,7 +407,10 @@
                     '--lp-font-headline': `'${state.fontHeadline}', serif`,
                     '--lp-font-body': `'${state.fontBody}', sans-serif`,
                     '--lp-font-mono': `'${state.fontMono}', monospace`,
-                    'font-size': state.fontSize + 'px'
+                    'font-size': state.fontSize + 'px',
+                    '--lp-brand-green': state.brandTheme === 'avs' ? '#3a5785' : '#009640',
+                    '--lp-brand-green-dark': state.brandTheme === 'avs' ? '#2f456a' : '#007a34',
+                    '--lp-brand-yellow': state.brandTheme === 'avs' ? '#7e6143' : '#FFE600'
                  }"
                  v-html="previewHtml"></div>
         </main>

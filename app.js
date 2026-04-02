@@ -6,6 +6,7 @@ const defaultState = {
     fontBody: "Helvetica Neue",
     fontMono: "Space Mono",
     fontSize: "16",
+    brandTheme: "lawsons",
 
     // SCALES
     scHeroTag: 1.0,
@@ -396,6 +397,15 @@ createApp({
                 // In the builder, template-styles.css holds our exact styling.
                 const res = await fetch('template-styles.css');
                 const css = await res.text();
+                
+                const themeVars = state.brandTheme === 'avs' 
+                    ? `    --lp-brand-green: #3a5785 !important;
+    --lp-brand-green-dark: #2f456a !important;
+    --lp-brand-yellow: #7e6143 !important;` 
+                    : `    --lp-brand-green: #009640 !important;
+    --lp-brand-green-dark: #007a34 !important;
+    --lp-brand-yellow: #FFE600 !important;`;
+
                 block1Str = `<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Space+Mono&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -410,6 +420,7 @@ ${css}
     --lp-font-body: '${state.fontBody}', sans-serif !important;
     --lp-font-mono: '${state.fontMono}', monospace !important;
     font-size: ${state.fontSize}px !important;
+${themeVars}
 }
 
 ${getScaleCSS(state)}
