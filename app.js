@@ -29,6 +29,9 @@ const defaultState = {
     scCredDesc: 1.0,
     scFooterTitle: 1.0,
     scFooterDesc: 1.0,
+    scFaqTitle: 1.0,
+    scFaqQ: 1.0,
+    scFaqA: 1.0,
 
     // HERO
     heroTag: "Lugarde Summer Houses at Lawsons",
@@ -90,6 +93,15 @@ const defaultState = {
     footerBtn1Url: "#",
     footerBtn2: "Speak to an Engineer",
     footerBtn2Url: "#",
+
+    // FAQ SECTION
+    faqTag: "Common Queries",
+    faqTitle: "Frequently Asked Questions",
+    faqs: [
+        { question: "What is the warranty period?", answer: "All our summerhouses come with a 5-year warranty on manufacturing faults, giving you peace of mind." },
+        { question: "Do I need planning permission?", answer: "In many cases, our buildings are designed to fall within permitted development rights. However, we advise checking with your local authority as regulations can vary based on location and size." },
+        { question: "Is delivery and installation included?", answer: "Delivery is typically included within standard regions. Professional installation is available as an optional extra and can be quoted separately." }
+    ]
 };
 
 // Global templates so we can use them in computed and export properties
@@ -133,6 +145,10 @@ const getScaleCSS = (s) => `
 .lugarde-premier-page .lp-cta__title { font-size: calc(2.5rem * ${s.scFooterTitle}) !important; }
 @media(min-width: 1024px) { .lugarde-premier-page .lp-cta__title { font-size: calc(4.5rem * ${s.scFooterTitle}) !important; } }
 .lugarde-premier-page .lp-cta__desc { font-size: calc(1.25rem * ${s.scFooterDesc}) !important; }
+
+.lugarde-premier-page .lp-faq__title { font-size: calc(2.5rem * ${s.scFaqTitle}) !important; }
+.lugarde-premier-page .lp-faq__question { font-size: calc(1.25rem * ${s.scFaqQ}) !important; }
+.lugarde-premier-page .lp-faq__answer p { font-size: calc(1rem * ${s.scFaqA}) !important; }
 `;
 
 const getBlock3 = (s) => `
@@ -315,6 +331,30 @@ const getBlock5 = (s) => `
 </section>
 `;
 
+const getBlock6 = (s) => `
+<section class="lp-faq" id="lugarde-faq">
+  <div class="lp-container">
+    <div class="lp-faq__header">
+      <h3 class="lp-faq__tag">${s.faqTag}</h3>
+      <h2 class="lp-faq__title">${s.faqTitle}</h2>
+    </div>
+    <div class="lp-faq__list">
+      ${s.faqs.map((faq, index) => `
+      <details class="lp-faq__item" ${index === 0 ? 'open' : ''}>
+        <summary class="lp-faq__question">
+          ${faq.question}
+          <span class="material-symbols-outlined lp-faq__icon">expand_more</span>
+        </summary>
+        <div class="lp-faq__answer">
+          <p>${faq.answer}</p>
+        </div>
+      </details>
+      `).join('')}
+    </div>
+  </div>
+</section>
+`;
+
 
 createApp({
     setup() {
@@ -339,10 +379,10 @@ createApp({
         const activeTab = ref('hero');
         const showExport = ref(false);
         const exportTab = ref(1);
-        const exportedBlocks = reactive({ block1: '', block3: '', block4: '', block5: '' });
+        const exportedBlocks = reactive({ block1: '', block3: '', block4: '', block5: '', block6: '' });
 
         const previewHtml = computed(() => {
-            return "<style>" + getScaleCSS(state) + "</style>\\n" + getBlock3(state) + "\\n" + getBlock4(state) + "\\n" + getBlock5(state);
+            return "<style>" + getScaleCSS(state) + "</style>\\n" + getBlock3(state) + "\\n" + getBlock4(state) + "\\n" + getBlock5(state) + "\\n" + getBlock6(state);
         });
 
         const wrapBlock = (htmlString) => {
@@ -383,6 +423,7 @@ ${getScaleCSS(state)}
             exportedBlocks.block3 = wrapBlock(getBlock3(state));
             exportedBlocks.block4 = wrapBlock(getBlock4(state));
             exportedBlocks.block5 = wrapBlock(getBlock5(state));
+            exportedBlocks.block6 = wrapBlock(getBlock6(state));
 
             showExport.value = true;
             exportTab.value = 1;
@@ -402,6 +443,14 @@ ${getScaleCSS(state)}
             }
         };
 
+        const addFaq = () => {
+            state.faqs.push({ question: "New Question?", answer: "Provide an answer here." });
+        };
+
+        const removeFaq = (idx) => {
+            state.faqs.splice(idx, 1);
+        };
+
         return {
             state,
             activeTab,
@@ -411,7 +460,9 @@ ${getScaleCSS(state)}
             exportedBlocks,
             exportBlocks,
             copyActiveBlock,
-            resetState
+            resetState,
+            addFaq,
+            removeFaq
         }
     }
 }).mount('#app');
